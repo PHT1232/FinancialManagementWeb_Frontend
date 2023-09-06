@@ -24,6 +24,11 @@ import { PanelModule } from 'primeng/panel';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//Ngx
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,10 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ScrollPanelModule,
     PaginatorModule,
-    ButtonModule
+    ButtonModule,
+    NgbModule,
+    BsDatepickerModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

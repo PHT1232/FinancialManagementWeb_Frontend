@@ -1,21 +1,65 @@
-<section class="content px-2" style="padding-top: 20px;">
-    <p-panel [style]="{'margin-left':'15px','margin-right':'15px'}">
+  <section class="content px-2" style="margin-left: 15px; margin-right: 15px; padding-top: 20px">
+    <p-panel>
       <ng-template pTemplate="header">
-        <div>
-          <h1>{{ "Kho" }}</h1>
+        <div class="text-right">
+          <p-button
+            label="Tạo"
+            routerLink="create"
+          >
+          </p-button>
         </div>
-        <p-button 
-        label="Thêm"
-        routerLink="create"
-        >
-        </p-button>
-              
       </ng-template>
-        
+      <div class="card-header">
+        <div class="card mb-0 mt-2">
+          <div class="card-body">
+            <form class="form-horizontal">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row mb-0">
+                    <div class="col pt-2">
+                      <!-- <select
+                        class="form-control"
+                        [(ngModel)]="storageCode"
+                        [ngModelOptions]="{ standalone: true }"
+                        (change)="getDataPage(1)"
+                        aria-label="Default select example"
+                      >
+                        <option value="0" selected>Kho</option>
+                        <option
+                          *ngFor="
+                            let storage of getStorage.items;
+                            let i = index
+                          "
+                          value="{{ storage.storageCode }}"
+                        >
+                          {{ storage.storageName }}
+                        </option>
+                      </select> -->
+                      <p-dropdown [style]="{'width':'100%' }" 
+                      placeholder="Chi nhánh"
+                      optionLabel="name" [filter]="true" filterBy="name" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col pt-2">
+                      <input type="text"
+                            placeholder="Ngày/tháng/năm"
+                            class="form-control"
+                            style="height: 49px;"
+                            bsDaterangepicker
+                            [bsConfig]="{ isAnimated: true }"
+                            [(ngModel)]="bsInlineRangeValue"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
       <div class="card-body">
-        <div class="table-responsive">
-          <p-scrollPanel [style]="{ width: '100%', height: '540px' }">
-        </p-scrollPanel>
+        <div class="table-responsive" style="margin-top: 15px">
+          
         </div>
       </div>
       <div class="card-footer table-card-footer bg-light border-top">
@@ -27,20 +71,20 @@
           </div>
           <!-- <div class="col-sm-4 col-12 text-center">
             <p class="mb-0 my-2">
-              {{ "TotalRecordsCount" | localize: totalItems }}
+              {{ "TotalRecordsCount" | localize : totalItems }}
             </p>
           </div> -->
           <div class="col-sm-5 col-12">
             <div class="float-sm-right m-auto">
-              
-            <p-paginator [first]="first" [rows]="rows" [totalRecords]="totalItems" [rowsPerPageOptions]="[6, 10, 15]"></p-paginator>
-              <!-- <abp-pagination-controls id="server"
-                (pageChange)="getDataPage($event)">
-              </abp-pagination-controls> -->
+              <p-paginator
+                [first]="first"
+                [rows]="rows"
+                [totalRecords]="totalItems"
+                [rowsPerPageOptions]="[6, 10, 15]"
+              ></p-paginator>
             </div>
           </div>
         </div>
       </div>
     </p-panel>
-
   </section>

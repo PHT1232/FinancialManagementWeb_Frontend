@@ -11,4 +11,5 @@ export class ReciptComponent extends AppComponent {
   totalItems: number = 10;
   first: number = 0;
   rows: number = 6;
+  bsInlineRangeValue!: Date[];
 }
