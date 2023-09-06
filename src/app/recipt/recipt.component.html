@@ -1,0 +1,46 @@
+<section class="content px-2" style="padding-top: 20px;">
+    <p-panel [style]="{'margin-left':'15px','margin-right':'15px'}">
+      <ng-template pTemplate="header">
+        <div>
+          <h1>{{ "Kho" }}</h1>
+        </div>
+        <p-button 
+        label="Thêm"
+        routerLink="create"
+        >
+        </p-button>
+              
+      </ng-template>
+        
+      <div class="card-body">
+        <div class="table-responsive">
+          <p-scrollPanel [style]="{ width: '100%', height: '540px' }">
+        </p-scrollPanel>
+        </div>
+      </div>
+      <div class="card-footer table-card-footer bg-light border-top">
+        <div class="row">
+          <div class="col-sm-3 col-12 text-sm-left text-center">
+            <button class="btn btn-secondary">
+              <i class="fas fa-redo-alt"></i>
+            </button>
+          </div>
+          <!-- <div class="col-sm-4 col-12 text-center">
+            <p class="mb-0 my-2">
+              {{ "TotalRecordsCount" | localize: totalItems }}
+            </p>
+          </div> -->
+          <div class="col-sm-5 col-12">
+            <div class="float-sm-right m-auto">
+              
+            <p-paginator [first]="first" [rows]="rows" [totalRecords]="totalItems" [rowsPerPageOptions]="[6, 10, 15]"></p-paginator>
+              <!-- <abp-pagination-controls id="server"
+                (pageChange)="getDataPage($event)">
+              </abp-pagination-controls> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-panel>
+
+  </section>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,15 +10,27 @@ import { SidebarComponent } from './sideBar/sidebar/sidebar.component';
 //Material UI
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 //PrimeNg UI
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { ReciptComponent } from './recipt/recipt.component';
+import { ReceiptCreateComponent } from './recipt/receipt-create/receipt-create.component';
+import { PanelModule } from 'primeng/panel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { PaginatorModule } from 'primeng/paginator';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    ReciptComponent,
+    ReceiptCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +39,16 @@ import { DividerModule } from 'primeng/divider';
     MatSidenavModule,
     MatIconModule,
     DividerModule,
-    CardModule
+    CardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatButtonModule,
+    PanelModule,
+    FormsModule,
+    ScrollPanelModule,
+    PaginatorModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

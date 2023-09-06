@@ -1,5 +1,20 @@
 .header_icon {
-    padding: 25px 60px 10px 60px;
+    padding: 35px 60px 45px 60px;
     color: white;
     font-size: 25pt;
+}
+
+.menu_card {
+    /* top: 20px; */
+    /* position: relative; */
+    margin: 10px 15px 0px 15px;
+    padding: 15px 0px 15px 30px;
+    border-radius: 15px;
+    color: white;
+    background: #424769;
+    font-size: 15pt;
+}
+
+.menu_card:hover {
+    background: #676f9d;
 }
