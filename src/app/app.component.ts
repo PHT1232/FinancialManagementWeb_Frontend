@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Routes } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, Routes, UrlSegment } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,20 @@ export class AppComponent {
   events: string[] = [];
   opened: boolean = true;
   title = 'FinancialManagementWeb_Frontend';
-  currentRoute: string = "";
+  currentRoute!: string;
 
-  constructor() {
+  constructor(public location: Location)
+  {
+  }
+
+  getCurrentUrl(): string {
+    let currentUrl = this.location.path();
+    if (currentUrl === "/receipt") {
+      this.currentRoute = "Hóa đơn";
+      return "Hóa đơn";
+    } else {
+      this.currentRoute = "Home";
+      return "Home";
+    }
   }
 }

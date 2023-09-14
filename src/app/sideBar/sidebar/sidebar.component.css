@@ -1,20 +1,40 @@
 .header_icon {
-    padding: 35px 60px 45px 60px;
-    color: white;
-    font-size: 25pt;
+    padding: 40px 20px 40px 20px;
+    color: black;
+    font-size: 20pt;
 }
 
 .menu_card {
     /* top: 20px; */
     /* position: relative; */
-    margin: 10px 15px 0px 15px;
-    padding: 15px 0px 15px 30px;
-    border-radius: 15px;
-    color: white;
-    background: #424769;
-    font-size: 15pt;
+    margin: 10px 0px 0px 0px;
+    padding: 0px 20px 15px 0px;
+    text-align: center;
+    cursor: pointer;
+    color: black;
 }
 
 .menu_card:hover {
-    background: #676f9d;
+    background: lightgray;
+}
+
+.button_text {
+    position: relative; 
+    left: 8px;
+    top: 10px;
+    font-size: 10pt;
+}
+
+.button_icon {
+    position: relative; 
+    left: 8px;
+    top: 10px;
+    font-size: 25pt;
+}
+
+.back_ground {
+    background: #57AE53;
+    position: absolute;
+    height: 73px;
+    width: 5px;
 }

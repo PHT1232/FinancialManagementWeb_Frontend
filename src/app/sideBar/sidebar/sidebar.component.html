@@ -1,10 +1,33 @@
 <div class="header_icon">
     <span style="position: relative; bottom: 1px;">TÀI CHÍNH</span>
 </div>
-<span style="color: white; margin: 0px 10px 10px 28px;">Main menu</span>
-<div class="menu_card">
-    <i class="pi pi-home"></i><span style="position: relative; left: 8px;">Dashboard</span>
+<div class="menu_card" [routerLink]="['/']">
+    <div *ngIf="getCurrentUrl() === 'Home'" class="back_ground"></div>
+    <ng-template [ngIf]="getCurrentUrl() === 'Home'" [ngIfElse]="blue1">
+        <i class="pi pi-home button_icon" style="color: #57AE53;"></i>
+        <br>
+        <span class="button_text" style="color: #57AE53;">Dashboard</span>
+    </ng-template>
+    
+    <ng-template #blue1>
+        <i class="pi pi-home button_icon" ></i>
+        <br>
+        <span class="button_text">Dashboard</span>
+    </ng-template>
 </div>
-<div class="menu_card" style="cursor: pointer;" [routerLink]="['/receipt']">
-    <i class="pi pi-book"></i><span style="position: relative; left: 8px;">Hóa đơn</span>
+<div class="menu_card" [routerLink]="['/receipt']">
+    <div *ngIf="getCurrentUrl() === 'Hóa đơn'" class="back_ground"></div>
+    <div class="icon_text">
+        <ng-template [ngIf]="getCurrentUrl() === 'Hóa đơn'" [ngIfElse]="blue2">
+            <i class="pi pi-book button_icon" style="color: #57AE53;"></i>
+            <br>
+            <span class="button_text" style="color: #57AE53;">Hóa đơn</span>
+        </ng-template>
+        
+        <ng-template #blue2>
+            <i class="pi pi-book button_icon"></i>
+            <br>
+            <span class="button_text">Hóa đơn</span>
+        </ng-template>
+    </div>
 </div>

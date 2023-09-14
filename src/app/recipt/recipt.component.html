@@ -17,24 +17,6 @@
                 <div class="col-md-6">
                   <div class="form-group row mb-0">
                     <div class="col pt-2">
-                      <!-- <select
-                        class="form-control"
-                        [(ngModel)]="storageCode"
-                        [ngModelOptions]="{ standalone: true }"
-                        (change)="getDataPage(1)"
-                        aria-label="Default select example"
-                      >
-                        <option value="0" selected>Kho</option>
-                        <option
-                          *ngFor="
-                            let storage of getStorage.items;
-                            let i = index
-                          "
-                          value="{{ storage.storageCode }}"
-                        >
-                          {{ storage.storageName }}
-                        </option>
-                      </select> -->
                       <p-dropdown [style]="{'width':'100%' }" 
                       placeholder="Chi nhánh"
                       optionLabel="name" [filter]="true" filterBy="name" [showClear]="true"></p-dropdown>

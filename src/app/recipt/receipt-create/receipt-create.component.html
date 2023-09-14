@@ -1,6 +1,83 @@
-<p-card header="Title">
-    <p class="m-0">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-        quas!
-    </p>
-</p-card>
+<div class="container">
+    <form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
+    <div class="modal-body">
+        <div class="container-add">
+        <div class="container-row">
+            <div class="row" style="padding-bottom: 25px">
+            <div class="col">
+                <div class="row">
+                <div class="col required">
+                    <label for="name">
+                    {{ "Mã danh mục" }}
+                    </label>
+                    <span style="color: red; margin-left: 5px; font-size: 14pt"
+                    >*</span
+                    >
+                </div>
+                </div>
+                <div class="row">
+                <div class="col">
+                    <input
+                    type="text"
+                    class="form-control"
+                    name="categoryCode"
+                    id="categoryCode"
+                    required
+                    maxlength="32"
+                    />
+                </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                <div class="col">
+                    <label for="name">
+                    {{ "Tên danh mục" }}
+                    </label>
+                    <span style="color: red; margin-left: 5px; font-size: 14pt"
+                    >*</span
+                    >
+                </div>
+                </div>
+                <div class="row">
+                <div class="col">
+                    <input
+                    type="text"
+                    class="form-control"
+                    name="categoryName"
+                    id="categoryName"
+                    required
+                    maxlength="50"
+                    />
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="row" style="padding-bottom: 25px">
+            <div class="col">
+                <div class="row">
+                <div class="col">
+                    <label for="name">
+                    {{ "Chú thích" }}
+                    </label>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col">
+                    <textarea
+                    class="form-control"
+                    name="description"
+                    id="description"
+                    cols="20"
+                    rows="10"
+                    ></textarea>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </form>
+</div> 
+  
