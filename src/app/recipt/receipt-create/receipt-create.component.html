@@ -1,83 +1,137 @@
-<div class="container">
-    <form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
-    <div class="modal-body">
-        <div class="container-add">
-        <div class="container-row">
-            <div class="row" style="padding-bottom: 25px">
-            <div class="col">
-                <div class="row">
-                <div class="col required">
-                    <label for="name">
-                    {{ "Mã danh mục" }}
-                    </label>
-                    <span style="color: red; margin-left: 5px; font-size: 14pt"
-                    >*</span
-                    >
-                </div>
-                </div>
-                <div class="row">
+<div [@routerTransition]>
+    <div class="container">
+        <form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
+        <div class="modal-body">
+            <div class="container-add">
+            <div class="container-row">
+                <div class="row" style="padding-bottom: 25px">
                 <div class="col">
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="categoryCode"
-                    id="categoryCode"
-                    required
-                    maxlength="32"
-                    />
+                    <div class="row">
+                    <div class="col required">
+                        <label for="name" style="font-size: 13pt;">
+                        {{ "Tên cửa hàng" }}
+                        </label>
+                        <span style="color: red; margin-left: 5px; font-size: 14pt"
+                        >*</span
+                        >
+                    </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                    <div class="col">
+                        <input
+                        type="text"
+                        class="form-control"
+                        name="storeName"
+                        id="storeName"
+                        required
+                        maxlength="32"
+                        />
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row">
                 <div class="col">
-                    <label for="name">
-                    {{ "Tên danh mục" }}
-                    </label>
-                    <span style="color: red; margin-left: 5px; font-size: 14pt"
-                    >*</span
-                    >
+                    <div class="row">
+                    <div class="col">
+                        <label for="name" style="font-size: 13pt;">
+                        {{ "Địa chỉ" }}
+                        </label>
+                        <span style="color: red; margin-left: 5px; font-size: 14pt"
+                        >*</span
+                        >
+                    </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                    <div class="col">
+                        <input
+                        type="text"
+                        class="form-control"
+                        name="address"
+                        id="address"
+                        required
+                        maxlength="50"
+                        />
+                    </div>
+                    </div>
                 </div>
-                </div>
-                <div class="row">
+                </div>           
+                <div class="row" style="padding-bottom: 25px">
                 <div class="col">
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="categoryName"
-                    id="categoryName"
-                    required
-                    maxlength="50"
-                    />
+                    <div class="row">
+                    <div class="col required">
+                        <label for="name" style="font-size: 13pt;">
+                        {{ "Tags" }}
+                        </label>
+                        <span style="color: red; margin-left: 5px; font-size: 14pt"
+                        >*</span
+                        >
+                    </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                    <div class="col">
+                        <mat-form-field appearance="fill" >
+                            <mat-select formControlName="level"
+                                    placeholder="Lesson level">
+                                <mat-option value="beginner">Beginner</mat-option>
+                                <mat-option value="intermediate">Intermediate</mat-option>
+                                <mat-option value="advanced">Advanced</mat-option>
+                                <mat-option value="option">New Options...</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    </div>
                 </div>
                 </div>
-            </div>
-            </div>
-            <div class="row" style="padding-bottom: 25px">
-            <div class="col">
-                <div class="row">
-                <div class="col">
-                    <label for="name">
-                    {{ "Chú thích" }}
-                    </label>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col">
-                    <textarea
-                    class="form-control"
-                    name="description"
-                    id="description"
-                    cols="20"
-                    rows="10"
-                    ></textarea>
-                </div>
-                </div>
+                <div class="row" style="padding-bottom: 25px">
+                    <div class="col">
+                        <div class="row">
+                        <div class="col">
+                            <label for="name" style="font-size: 13pt; margin-bottom: 12px">
+                            {{ "Items:" }}
+                            </label>
+                            <p-button style="margin: 15px 15px 15px 15px;" label="Tạo" 
+                            [loading]="loading" (onClick)="addLesson()"></p-button>
+                        </div>
+                        </div>
+                        <div
+                        class="row"
+                        style="margin-top: 15px">
+                        <div class="col">
+                            <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
+                                    <div [@routerTransition] class="lesson-form-row" [formGroup]="lessonForm">
+                                        <mat-form-field appearance="fill">
+                                            <input matInput
+                                                    formControlName="title"
+                                                    placeholder="Lesson title">
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-select formControlName="level"
+                                                    placeholder="Lesson level">
+                                                <mat-option value="beginner">Beginner</mat-option>
+                                                <mat-option value="intermediate">Intermediate</mat-option>
+                                                <mat-option value="advanced">Advanced</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <button
+                                            type="button"
+                                            class="btn bg-danger mx-2"
+                                            (click)="deleteLesson(i)"
+                                            >
+                                            <i class="pi pi-trash" style="color: white;"></i>
+                                        </button>
+                                    </div>
+                            </ng-container>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <app-modal-footer
+                    [cancelDisabled]="saving"
+                    [saveDisabled]="checkFormValid() || saving"
+                    (onCancelClick)="Cancel()"
+                    ></app-modal-footer>
             </div>
             </div>
         </div>
-        </div>
-    </div>
-    </form>
-</div> 
-  
+        </form>
+    </div> 
+</div>

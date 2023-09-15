@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
 //PrimeNg UI
@@ -29,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Ngx
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     SidebarComponent,
     ReciptComponent,
     ReceiptCreateComponent,
+    ModalFooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ButtonModule,
     NgbModule,
     BsDatepickerModule,
-    DropdownModule
+    DropdownModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
