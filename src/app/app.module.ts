@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sideBar/sidebar/sidebar.component';
+import { CreateTagComponent } from './recipt/tag/create-tag/create-tag.component';
+import { TagComponent } from './recipt/tag/tag.component';
 
 //Material UI
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -27,10 +29,15 @@ import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TreeSelectModule } from 'primeng/treeselect';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { TableModule } from 'primeng/table';
 
 //Ngx
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -39,6 +46,8 @@ import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.compo
     ReciptComponent,
     ReceiptCreateComponent,
     ModalFooterComponent,
+    CreateTagComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +70,15 @@ import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.compo
     BsDatepickerModule,
     DropdownModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    DynamicDialogModule,
+    TreeSelectModule,
+    FontAwesomeModule,
+    TableModule
   ],
-  providers: [],
+  providers: [
+    DialogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

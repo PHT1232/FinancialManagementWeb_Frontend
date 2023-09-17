@@ -67,17 +67,6 @@
                     </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                    <div class="col">
-                        <mat-form-field appearance="fill" >
-                            <mat-select formControlName="level"
-                                    placeholder="Lesson level">
-                                <mat-option value="beginner">Beginner</mat-option>
-                                <mat-option value="intermediate">Intermediate</mat-option>
-                                <mat-option value="advanced">Advanced</mat-option>
-                                <mat-option value="option">New Options...</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
                     </div>
                 </div>
                 </div>
@@ -88,7 +77,7 @@
                             <label for="name" style="font-size: 13pt; margin-bottom: 12px">
                             {{ "Items:" }}
                             </label>
-                            <p-button style="margin: 15px 15px 15px 15px;" label="Tạo" 
+                            <p-button [style]="{'margin-left': '15px'}" label="Tạo" 
                             [loading]="loading" (onClick)="addLesson()"></p-button>
                         </div>
                         </div>
