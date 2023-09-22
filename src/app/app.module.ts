@@ -35,7 +35,10 @@ import { TableModule } from 'primeng/table';
 
 //Ngx
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+//My style component
 import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.component';
+import { MenuComponent } from 'src/shared/menu-select/menu-component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
@@ -47,7 +50,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     ReceiptCreateComponent,
     ModalFooterComponent,
     CreateTagComponent,
-    TagComponent
+    TagComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
