@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./menu-component.css']
 })
 export class MenuComponent {
-  @Input() cancelLabel = 'Hủy';
+  @Input() tag!: tagCategory[];
   @Input() cancelDisabled!: boolean;
   @Input() saveLabel = 'Lưu';
   @Input() saveDisabled!: boolean;
