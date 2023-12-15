@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
 import { Location } from '@angular/common';
@@ -6,15 +6,24 @@ import { ChildrenOutletContexts, Router } from '@angular/router';
 import { appModuleAnimation } from 'src/shared/animations/routerTransitions';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TreeNode } from 'primeng/api';
+import { AnimationEvent, animate, state, style, transition, trigger } from '@angular/animations';
+import { tagCategory } from 'src/services/models/tag-category';
 
 @Component({
   selector: 'app-receipt-create',
   templateUrl: './receipt-create.component.html',
   styleUrls: ['./receipt-create.component.css'],
-  animations: [ appModuleAnimation() ]
+  animations: [ 
+    appModuleAnimation(),
+    trigger('deleteAnimation', [
+      state('prepare', style({ transform: 'scale(0)', opacity: '0' })),
+      transition('none => prepare', animate(200)),
+    ]) 
+  ]
 })
 export class ReceiptCreateComponent extends AppComponent implements OnInit {
   subCategoryFormArray = new FormArray([]);
+  isDialogVisible = false;
   isExist: boolean[] = [];
   isTrue = true;
   errorMessage = 'Không được trùng với tên hoặc mã danh mục';
@@ -25,6 +34,11 @@ export class ReceiptCreateComponent extends AppComponent implements OnInit {
   nodes: TreeNode[] = [];
 
   selectedNodes: any;
+
+  @Input() tag!: tagCategory;
+  @Output() closed = new EventEmitter<tagCategory>();
+
+  deleteState = 'none';
 
   constructor(locationApi: Location,
       contextsApi: ChildrenOutletContexts,
@@ -139,5 +153,24 @@ export class ReceiptCreateComponent extends AppComponent implements OnInit {
 
   checkFormValid(): boolean {
       return false;
+  }
+
+  OpenCreateDialog() {
+    console.log(this.isDialogVisible)
+    this.isDialogVisible = true;
+  }
+
+  isDialogVisibleChange(value: boolean) {
+    this.isDialogVisible = value;
+  }
+
+  onTagClicked() {
+    this.deleteState = 'prepare';
+  }
+
+  onDeleteAnimationDone(event: AnimationEvent, tag: tagCategory) {
+    if (event.toState === 'prepare') {
+      this.closed.emit(tag);
+    }
   }
 }

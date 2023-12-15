@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-tag',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-tag.component.css']
 })
 export class CreateTagComponent {
+  @Input() visible = false;
+  @Output() visibleChange = new EventEmitter<boolean>();
 
+  onHide(value: boolean) {
+    this.visibleChange.emit(value);
+  }
 }

@@ -6,11 +6,11 @@
   <mat-sidenav-content>
     <!-- <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button> -->
     <!-- <i class="pi pi-bars" style="cursor: pointer;" (click)="sidenav.toggle()"></i> -->
-    <mat-toolbar style="background-color: white;">
+    <mat-toolbar style="background-color: white; position: fixed;">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>{{ getCurrentUrl() }}</span>
+      <!-- <span>{{ getCurrentUrl() }}</span> -->
       <span class="example-spacer"></span>
     </mat-toolbar>
       <router-outlet></router-outlet>

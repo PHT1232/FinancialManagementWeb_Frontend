@@ -33,15 +33,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { TableModule } from 'primeng/table';
+import { SpeedDialModule } from 'primeng/speeddial';
+import { DialogModule } from 'primeng/dialog';
 
 //Ngx
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 //My style component
 import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.component';
-import { MenuComponent } from 'src/shared/menu-select/menu-component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TeamsComponent } from './teams/teams.component';
+import { CreateTeamsComponent } from './teams/create-teams/create-teams.component'
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     ModalFooterComponent,
     CreateTagComponent,
     TagComponent,
-    MenuComponent
+    TeamsComponent,
+    CreateTeamsComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +84,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     TreeSelectModule,
     FontAwesomeModule,
     TableModule,
-    HttpClientModule
+    DialogModule,
+    HttpClientModule,
+    SpeedDialModule
   ],
   providers: [
     DialogService

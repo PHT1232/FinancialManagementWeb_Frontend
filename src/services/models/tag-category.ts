@@ -1,5 +1,4 @@
-class tagCategory {
+export class tagCategory {
     id!: number;
-    icon!: string;
     name!: string;
 }

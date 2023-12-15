@@ -1,8 +1,8 @@
 <div [@routerTransition]>
-    <div class="container">
+    <div class="container" style="border-radius: 25px;">
         <form autocomplete="off" #createRoleForm="ngForm" (ngSubmit)="save()">
         <div class="modal-body">
-            <div class="container-add">
+            <div class="container-add" style="border-radius: 25px;">
             <div class="container-row">
                 <div class="row" style="padding-bottom: 25px">
                 <div class="col">
@@ -67,6 +67,10 @@
                     </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
+                        <div [@deleteAnimation]="deleteState"
+                            (@deleteAnimation.done)="onDeleteAnimationDone($event, tag)"
+                            class="app-tag"
+                            (click)="onTagClicked()">{{tag.name}}</div>
                     </div>
                 </div>
                 </div>
@@ -93,12 +97,9 @@
                                                     placeholder="Lesson title">
                                         </mat-form-field>
                                         <mat-form-field appearance="fill">
-                                            <mat-select formControlName="level"
-                                                    placeholder="Lesson level">
-                                                <mat-option value="beginner">Beginner</mat-option>
-                                                <mat-option value="intermediate">Intermediate</mat-option>
-                                                <mat-option value="advanced">Advanced</mat-option>
-                                            </mat-select>
+                                            <input matInput
+                                                    formControlName="title"
+                                                    placeholder="Amount">
                                         </mat-form-field>
                                         <button
                                             type="button"
@@ -124,3 +125,4 @@
         </form>
     </div> 
 </div>
+<app-tag [visible]="isDialogVisible" (visibleChange)="isDialogVisibleChange($event)"></app-tag>

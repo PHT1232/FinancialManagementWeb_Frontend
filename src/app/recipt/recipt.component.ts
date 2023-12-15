@@ -20,4 +20,6 @@ export class ReciptComponent extends AppComponent implements OnInit {
     // this.changeRoute();
     this.currentRoute = "Hóa đơn";
   }
+
+
 }

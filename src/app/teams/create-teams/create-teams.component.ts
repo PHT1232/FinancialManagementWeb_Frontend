@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-tag',
-  templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.css']
+  selector: 'app-create-teams',
+  templateUrl: './create-teams.component.html',
+  styleUrls: ['./create-teams.component.css']
 })
-export class TagComponent {
+export class CreateTeamsComponent {
   @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
 

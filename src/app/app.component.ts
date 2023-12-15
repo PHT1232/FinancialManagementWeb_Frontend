@@ -23,6 +23,9 @@ export class AppComponent {
     if (currentUrl === "/receipt" || currentUrl === "/receipt/create") {
       this.currentRoute = "Hóa đơn";
       return "Hóa đơn";
+    } else if (currentUrl === '/teams') {
+      this.currentRoute = "Nhóm";
+      return "Nhóm";
     } else {
       this.currentRoute = "Home";
       return "Home";

@@ -1,8 +1,0 @@
-.menu_li {
-    cursor: pointer;
-    border: 1px black solid;
-}
-
-.menu_li:hover {
-    background-color: gray;
-}
