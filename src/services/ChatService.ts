@@ -6,11 +6,19 @@ import { Chat } from './models/Chat';
     providedIn: 'root'
 })
 export class ChatService {
-   currentChat = this.socket.fromEvent<Chat>('chat');
-   chats = this.socket.fromEvent<string[]>('chats'); 
+//    currentChat = this.socket.fromEvent<Chat>('chat');
+//    chats = this.socket.fromEvent<string[]>('chats'); 
 
-   constructor(private socket: Socket) {
+   constructor() {
     
    }
 
+   getChat(id: string) {
+   }
+
+   getAllChat() {
+   }
+
+   sendChat(chat: string) {
+   }
 }

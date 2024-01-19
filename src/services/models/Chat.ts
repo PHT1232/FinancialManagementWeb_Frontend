@@ -1,3 +1,4 @@
 export class Chat {
-    chat!: string
+    id!: number;
+    chatMessage!: string;
 }

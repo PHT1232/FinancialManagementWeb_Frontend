@@ -43,9 +43,10 @@ import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.compo
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TeamsComponent } from './teams/teams.component';
-import { CreateTeamsComponent } from './teams/create-teams/create-teams.component'
+import { CreateTeamsComponent } from './teams/create-teams/create-teams.component';
+import { TestComponent } from './tests/test/test.component';
+import { ChatComponent } from './teams/chat/chat.component'
 
-const config: SocketIoConfig = { url: 'http://localhost:7279', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,8 @@ const config: SocketIoConfig = { url: 'http://localhost:7279', options: {} };
     ModalFooterComponent,
     TeamsComponent,
     CreateTeamsComponent,
+    TestComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,6 @@ const config: SocketIoConfig = { url: 'http://localhost:7279', options: {} };
     TabViewModule,
     InputMaskModule,
     InputTextModule,
-    SocketIoModule.forRoot(config)
   ],
   providers: [
     DialogService
