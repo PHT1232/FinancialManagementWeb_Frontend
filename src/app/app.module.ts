@@ -45,7 +45,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TeamsComponent } from './teams/teams.component';
 import { CreateTeamsComponent } from './teams/create-teams/create-teams.component';
 import { TestComponent } from './tests/test/test.component';
-import { ChatComponent } from './teams/chat/chat.component'
+import { ChatComponent } from './teams/chat/chat.component';
+import { LoginComponent } from './user/login/login.component';
+import { CreateComponent } from './user/create/create.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { ChatComponent } from './teams/chat/chat.component'
     CreateTeamsComponent,
     TestComponent,
     ChatComponent,
+    LoginComponent,
+    CreateComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

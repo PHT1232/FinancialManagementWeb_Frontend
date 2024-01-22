@@ -8,6 +8,7 @@
   background: #F7F7F7;
 } */
 
+
 .center {
   position: absolute;
   top: 50%;
@@ -23,6 +24,13 @@
   border-radius: 50%;
 }
 
+/* .message_options {
+  display: none;
+}
+
+.message_options:hover {
+  display: block;
+} */
 
 .chat {
   display: flex;
