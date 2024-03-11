@@ -3,10 +3,10 @@
   (closed)="events.push('close!')">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content style="overflow: unset;">
     <!-- <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button> -->
     <!-- <i class="pi pi-bars" style="cursor: pointer;" (click)="sidenav.toggle()"></i> -->
-    <mat-toolbar style="background-color: white; position: fixed;">
+    <mat-toolbar style="background-color: white;">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>

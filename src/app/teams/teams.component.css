@@ -1,9 +1,14 @@
+.container {
+    max-width: 100%;
+    padding-left: 0px;
+  }
 .leftpanel {
     background-color: whitesmoke;
     height: 100%;
 }
 .rightpanel {
     height: 100%;
+    padding-left: 0px;
 }
 .header_icon {
     padding: 40px 0px 40px 20px;
@@ -31,3 +36,5 @@
     background-color: #57AE53;;
     text-align: center;
 }
+
+
