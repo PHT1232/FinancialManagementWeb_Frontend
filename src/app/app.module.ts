@@ -34,6 +34,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TabViewModule } from 'primeng/tabview';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 //Ngx
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -46,7 +47,6 @@ import { TeamsComponent } from './teams/teams.component';
 import { CreateTeamsComponent } from './teams/create-teams/create-teams.component';
 import { TestComponent } from './tests/test/test.component';
 import { ChatComponent } from './teams/chat/chat.component';
-import { LoginComponent } from './user/login/login.component';
 import { CreateComponent } from './user/create/create.component';
 import { UserComponent } from './user/user.component';
 
@@ -59,7 +59,6 @@ import { UserComponent } from './user/user.component';
     CreateTeamsComponent,
     TestComponent,
     ChatComponent,
-    LoginComponent,
     CreateComponent,
     UserComponent,
   ],
@@ -94,6 +93,7 @@ import { UserComponent } from './user/user.component';
     TabViewModule,
     InputMaskModule,
     InputTextModule,
+    InputSwitchModule,
   ],
   providers: [
     DialogService

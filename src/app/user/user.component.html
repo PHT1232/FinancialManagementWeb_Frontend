@@ -1,24 +1,24 @@
-<div class="row" style="height: 94%;">
-    <div class="leftpanel col-4">
-        <div class="row">
-            <!-- <div class="col-10" style="padding-right: 0px;">
-                <div class="header_icon">
-                    <span style="bottom: 1px;">Nhóm</span>
-                </div>
-            </div>
-            <hr style="margin: 0px; background-color: black;"> -->
-            <button class="transparent_button">Click me!</button>
-        </div>
-        <div class="teamrow row">
-            <div class="col-sm-2">
-                <!-- <img src="" alt=""> -->
-            </div>
-            <div class="col-sm-8" style="margin-top: 20px;">
-
-            </div>
-        </div>
-    </div>
-    <div class="rightpanel col-8">
-        <app-create></app-create>
-    </div>
-</div>
+<p-table [value]="products" [(selection)]="selectedProducts" dataKey="code" [paginator]="true" [rows]="5" [selectionPageOnly]="true" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th style="min-width:200px">Code</th>
+            <th style="min-width:200px">Name</th>
+            <th style="min-width:200px">Category</th>
+            <th style="min-width:200px">Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="product"></p-tableCheckbox>
+            </td>
+            <td>{{product.code}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.quantity}}</td>
+        </tr>
+    </ng-template>
+</p-table>
