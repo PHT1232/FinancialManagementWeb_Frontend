@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sideBar/sidebar/sidebar.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { JwtModule } from '@auth0/angular-jwt';
 
 //Material UI
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -49,6 +50,13 @@ import { TestComponent } from './tests/test/test.component';
 import { ChatComponent } from './teams/chat/chat.component';
 import { CreateComponent } from './user/create/create.component';
 import { UserComponent } from './user/user.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { LoginComponent } from './accounts/login/login.component';
+import { DashbroadComponent } from './dashbroad/dashbroad.component';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -61,6 +69,9 @@ import { UserComponent } from './user/user.component';
     ChatComponent,
     CreateComponent,
     UserComponent,
+    AccountsComponent,
+    LoginComponent,
+    DashbroadComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +105,13 @@ import { UserComponent } from './user/user.component';
     InputMaskModule,
     InputTextModule,
     InputSwitchModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:7279"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [
     DialogService

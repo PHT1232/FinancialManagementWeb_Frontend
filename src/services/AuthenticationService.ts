@@ -4,6 +4,7 @@ import { ApplicationUser } from "./models/authModel/ApplicationUser";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { LoginInfo } from "./models/authModel/LoginInfo";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 const authenServiceUrl = 'https://localhost:7279/api/authenticate' 
 @Injectable({
@@ -15,7 +16,8 @@ export class AuthenticationService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private jwtHelper: JwtHelperService
     ) {
         this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
         this.user = this.userSubject.asObservable();
@@ -25,6 +27,12 @@ export class AuthenticationService {
         return this.userSubject.value;
     }
 
+    public isUserAuthenticated = (): boolean => {
+        const token = localStorage.getItem("token");
+     
+        return !this.jwtHelper.isTokenExpired(token);
+      }
+
     login(username: string, password: string) {
         let loginUser = new ApplicationUser();
         loginUser.userName = username;
@@ -33,6 +41,7 @@ export class AuthenticationService {
         return this.http.post<LoginInfo>(loginUrl, loginUser).pipe(
             map(user => {
                 localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('token', user.token);
                 this.userSubject.next(user);
                 return user;
             })
