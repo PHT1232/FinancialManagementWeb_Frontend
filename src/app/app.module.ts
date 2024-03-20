@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +53,7 @@ import { UserComponent } from './user/user.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { LoginComponent } from './accounts/login/login.component';
 import { DashbroadComponent } from './dashbroad/dashbroad.component';
+import { RoleComponent } from './tests/role/role.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -72,6 +73,7 @@ export function tokenGetter() {
     AccountsComponent,
     LoginComponent,
     DashbroadComponent,
+    RoleComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,7 +116,7 @@ export function tokenGetter() {
     })
   ],
   providers: [
-    DialogService
+    DialogService,
   ],
   bootstrap: [AppComponent]
 })

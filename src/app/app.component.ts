@@ -20,10 +20,10 @@ export class AppComponent {
 
   getCurrentUrl(): string {
     let currentUrl = this.location.path();
-    if (currentUrl === "/user" || currentUrl === "/user/create") {
+    if (currentUrl === "/app/user" || currentUrl === "/app/user/create") {
       this.currentRoute = "Người dùng";
       return "Người dùng";
-    } else if (currentUrl === '/teams') {
+    } else if (currentUrl === '/app/teams') {
       this.currentRoute = "Nhóm";
       return "Nhóm";
     } else {

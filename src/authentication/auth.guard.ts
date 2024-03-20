@@ -10,19 +10,19 @@ class PermissionService {
         private authenService: AuthenticationService) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        const user = this.authenService.userValue;
+        const user = localStorage.getItem('user');
         if (user == null) {
             this.router.navigate(['/account/login'], { queryParams: {returnUrl: state.url}});
             return false;
         }
+        
+        let permission = route.data['permission'];
 
-        if (this.authenService.isUserAuthenticated()) {
+        if (this.authenService.isGranted(permission)) {
             return true;
         }
 
-        if (route.data[''])
-
-        this.router.navigate(['/account/login'], { queryParams: {returnUrl: state.url}});
+        this.router.navigate(['account/login'], { queryParams: {returnUrl: state.url}});
         return false;
     }
 }

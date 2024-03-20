@@ -15,7 +15,7 @@
         <span class="button_text">Dashboard</span>
     </ng-template>
 </div>
-<div class="menu_card" [routerLink]="['/teams']">
+<div class="menu_card" [routerLink]="['/app/teams']">
     <div *ngIf="getCurrentUrl() === 'Nhóm'" class="back_ground"></div>
     <div class="icon_text">
         <ng-template [ngIf]="getCurrentUrl() === 'Nhóm'" [ngIfElse]="blue3">
@@ -31,7 +31,7 @@
         </ng-template>
     </div>
 </div>
-<div class="menu_card" [routerLink]="['/user']">
+<div class="menu_card" [routerLink]="['/app/user']">
     <div *ngIf="getCurrentUrl() === 'Người dùng'" class="back_ground"></div>
     <div class="icon_text">
         <ng-template [ngIf]="getCurrentUrl() === 'Người dùng'" [ngIfElse]="blue2">
