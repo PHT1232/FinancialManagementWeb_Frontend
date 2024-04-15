@@ -25,6 +25,7 @@ import { DividerModule } from 'primeng/divider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
+import { SplitButtonModule } from 'primeng/splitbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TreeSelectModule } from 'primeng/treeselect';
@@ -36,8 +37,13 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { PasswordModule } from 'primeng/password';
+import { PanelModule } from 'primeng/panel';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 //Ngx
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 //My style component
@@ -47,13 +53,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TeamsComponent } from './teams/teams.component';
 import { CreateTeamsComponent } from './teams/create-teams/create-teams.component';
 import { TestComponent } from './tests/test/test.component';
-import { ChatComponent } from './teams/chat/chat.component';
-import { CreateComponent } from './user/create/create.component';
+import { ChatComponent } from './chat/chat.component';
 import { UserComponent } from './user/user.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { LoginComponent } from './accounts/login/login.component';
 import { DashbroadComponent } from './dashbroad/dashbroad.component';
 import { RoleComponent } from './tests/role/role.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { LoadingInterceptor } from 'src/services/LoadingInterceptor';
+import { CreateUserComponent } from './user/create-user/create-user.component';
+import { PersonalComponent } from './personal/personal.component';
+import { JoinTeamsComponent } from './teams/join-teams/join-teams.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -68,12 +79,14 @@ export function tokenGetter() {
     CreateTeamsComponent,
     TestComponent,
     ChatComponent,
-    CreateComponent,
     UserComponent,
     AccountsComponent,
     LoginComponent,
     DashbroadComponent,
     RoleComponent,
+    CreateUserComponent,
+    PersonalComponent,
+    JoinTeamsComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,10 +126,24 @@ export function tokenGetter() {
         allowedDomains: ["localhost:7279"],
         disallowedRoutes: []
       }
-    })
+    }),
+    PasswordModule,
+    PanelModule,
+    SplitButtonModule,
+    ToastModule,
+    LoadingIndicatorComponent,
+    ConfirmDialogModule,
+    NgxDropzoneModule
   ],
   providers: [
     DialogService,
+    ConfirmationService,
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

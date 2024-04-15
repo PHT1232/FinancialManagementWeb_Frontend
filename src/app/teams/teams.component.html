@@ -8,9 +8,10 @@
                     </div>
                 </div>
                 <div class="headerspeed col-2">
-                    <p-button (onClick)="OpenCreateDialog()">
+                    <p-speedDial [model]="tooltipItems" className="speeddial-left" direction="down" [buttonStyle]="{'bottom': '11px'}"></p-speedDial>
+                    <!-- <p-button (onClick)="OpenCreateDialog()">
                         <i class="pi pi-plus"></i>
-                    </p-button>
+                    </p-button> -->
                 </div>
                 <hr style="margin: 0px; background-color: black;">
             </div>
@@ -29,4 +30,5 @@
         </div>
     </div>
 <!-- </div>     -->
-<app-create-teams [visible]="isDialogVisible" (visibleChange)="isDialogVisibleChange($event)"></app-create-teams>
+<app-create-teams [visible]="isCreateDialogVisible" (visibleChange)="isCreateDialogVisibleChange($event)"></app-create-teams>
+<app-join-teams [visible]="isJoinDialogVisible" (visibleChange)="isJoinDialogVisibleChange($event)"></app-join-teams>

@@ -13,6 +13,9 @@ import { RoleComponent } from './tests/role/role.component';
 
 const routes: Routes = [
   {
+    path: '', redirectTo: '/app/teams', pathMatch: 'full'
+  },
+  {
     path: 'account',
     component: AccountsComponent,
     children: [

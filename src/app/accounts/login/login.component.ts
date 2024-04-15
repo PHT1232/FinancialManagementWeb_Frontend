@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpError } from '@microsoft/signalr';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/services/AuthenticationService';
 
 @Component({
@@ -16,43 +15,53 @@ export class LoginComponent {
   showError: boolean = false;
   loading: boolean = false;
 
-
-  constructor(private route: Router, private authenService: AuthenticationService) {}
+  constructor(private activatedRoute: ActivatedRoute, private route: Router, private authenService: AuthenticationService) 
+  {
+  }
 
   loginFn() {
+    let returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
     this.loading = true;
+    
     this.authenService.login(this.emailOrUsername, this.password).subscribe({
       next: (user) => { 
         this.loading = false;
+        console.log(returnUrl);
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', user.token);
-        this.route.navigate(['app/teams']);       
+
+        if (returnUrl === undefined || returnUrl === '') {
+          this.route.navigate(['app/teams']);       
+        } else {
+          this.route.navigate([returnUrl]);
+        }
       },
       error: (errorRes) => {
         if (!(errorRes instanceof HttpErrorResponse)) {
-          console.error('Lỗi khi kết nối đến sever ', errorRes);
+          console.error('Lỗi khi kết nối đến server ', errorRes);
         }
 
         if (errorRes.error.type === 'https://tools.ietf.org/html/rfc7231#section-6.6.1') {
           this.errorMessage = errorRes.error.title;
+        } else {
+          this.errorMessage = 'Lỗi khi kết nối đến server';
         }
+        
         this.loading = false;
         this.showError = true;
       }
     })
   }
 
-  checkFormValid() {
+  isFormValid() {
     if (this.emailOrUsername === undefined || this.emailOrUsername === '') {
-      this.errorMessage = 'Xin hãy nhập đủ trường'
-      return true;
+      return false;
     } 
 
     if (this.password === undefined || this.password === '') {
-      this.errorMessage = 'Xin hãy nhập đủ trường'
-      return true;
+      return false;
     }
 
-    return false;
+    return true;
   }
 }
