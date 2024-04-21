@@ -9,6 +9,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { LoginComponent } from './accounts/login/login.component';
 import { DashbroadComponent } from './dashbroad/dashbroad.component';
 import { RoleComponent } from './tests/role/role.component';
+import { PersonalComponent } from './personal/personal.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     path: 'app',
     component: DashbroadComponent,
     children: [
-      { path: 'teams', component: TeamsComponent, data: { permission: 'Admin' }, canActivate: [AuthGuard] },
+      { path: 'chats', component: PersonalComponent, data: { permission: 'User'}, canActivate: [AuthGuard] },
+      { path: 'teams', component: TeamsComponent, data: { permission: 'User' }, canActivate: [AuthGuard] },
       { path: 'user', component: UserComponent, data: { permission: 'Admin' }, canActivate: [AuthGuard] },
       { path: 'test', component: TestComponent },
       { path: 'role', component: RoleComponent, data: { permission: 'Admin' }, canActivate: [AuthGuard] }

@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, map } from "rxjs";
 import { ApplicationUser } from "./models/authModel/ApplicationUser";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { LoginInfo } from "./models/authModel/LoginInfo";
+import { TokenInfo } from "./models/authModel/TokenInfo";
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 const authenServiceUrl = 'https://localhost:7279/api/authenticate' 
@@ -25,15 +25,17 @@ export class AuthenticationService {
             return false;
         }
         if (token) {
-            let isRoleIsExist = false;
             const decodedToken = this.jwtHelper.decodeToken(token);
+
             let role: any[] = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-            role.forEach(element => {
-                if (element === permission) {
-                    isRoleIsExist = true
-                }
-            });
-            if (isRoleIsExist) {
+
+            if (role === undefined) {
+                return false;
+            }
+
+            let roleMatchPermission = role.find(element => element === permission);
+            
+            if (roleMatchPermission !== undefined) {
                 return true;
             }
         }
@@ -45,7 +47,7 @@ export class AuthenticationService {
         loginUser.userName = username;
         loginUser.password = password;
         let loginUrl = authenServiceUrl + '/login';
-        return this.http.post<LoginInfo>(loginUrl, loginUser);
+        return this.http.post<TokenInfo>(loginUrl, loginUser);
     }
 
     register(userName: string, password: string) {

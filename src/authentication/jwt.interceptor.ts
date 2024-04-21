@@ -9,9 +9,8 @@ export class JwtInterceptor implements HttpInterceptor {
     constructor(private authenService: AuthenticationService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        const isLoggedIn = user && token;
+        const isLoggedIn = token;
         const isApiUrl = req.url.startsWith(apiUrl);
         if (isLoggedIn && isApiUrl) {
             req = req.clone({

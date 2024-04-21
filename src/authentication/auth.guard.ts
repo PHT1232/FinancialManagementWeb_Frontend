@@ -11,8 +11,8 @@ class PermissionService {
         private authenService: AuthenticationService) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        const user = localStorage.getItem('user');
-        if (user == null) {
+        const token = localStorage.getItem('token');
+        if (token == null) {
             this.router.navigate(['/account/login'], { queryParams: {returnUrl: state.url}});
             return false;
         }

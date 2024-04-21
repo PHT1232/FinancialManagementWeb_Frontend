@@ -17,6 +17,8 @@ export class LoginComponent {
 
   constructor(private activatedRoute: ActivatedRoute, private route: Router, private authenService: AuthenticationService) 
   {
+    let user = localStorage.getItem('user');
+
   }
 
   loginFn() {
@@ -24,13 +26,11 @@ export class LoginComponent {
     this.loading = true;
     
     this.authenService.login(this.emailOrUsername, this.password).subscribe({
-      next: (user) => { 
+      next: (token) => { 
         this.loading = false;
-        console.log(returnUrl);
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', user.token);
+        localStorage.setItem('token', token.token);
 
-        if (returnUrl === undefined || returnUrl === '') {
+        if (returnUrl === undefined || returnUrl === '' || returnUrl === '/account/login') {
           this.route.navigate(['app/teams']);       
         } else {
           this.route.navigate([returnUrl]);
@@ -44,7 +44,7 @@ export class LoginComponent {
         if (errorRes.error.type === 'https://tools.ietf.org/html/rfc7231#section-6.6.1') {
           this.errorMessage = errorRes.error.title;
         } else {
-          this.errorMessage = 'Lỗi khi kết nối đến server';
+          this.errorMessage = 'Xảy ra lỗi khi kết nối đến server ' + errorRes;
         }
         
         this.loading = false;
