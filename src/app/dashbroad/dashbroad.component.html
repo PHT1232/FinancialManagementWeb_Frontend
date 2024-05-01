@@ -1,0 +1,18 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav style="background: white;"#sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+  (closed)="events.push('close!')">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content style="overflow: unset;">
+    <!-- <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button> -->
+    <!-- <i class="pi pi-bars" style="cursor: pointer;" (click)="sidenav.toggle()"></i> -->
+    <mat-toolbar style="background-color: white;">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <span>{{ getCurrentUrl() }}</span> -->
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

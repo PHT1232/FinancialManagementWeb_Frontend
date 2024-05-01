@@ -8,17 +8,51 @@ import { MenuItem } from 'primeng/api';
 })
 export class TeamsComponent implements OnInit {
 
-  isDialogVisible = false;
+  isCreateDialogVisible = false;
+  isJoinDialogVisible = false;
+  
+  tooltipItems!: MenuItem[];
 
   ngOnInit(): void {
+      this.tooltipItems = [
+        {
+            tooltipOptions: {
+                tooltipLabel: 'Tạo'
+            },
+            icon: 'pi pi-pencil',
+            command: () => {
+              this.OpenCreateDialog();
+            }
+        },
+        {
+            tooltipOptions: {
+                tooltipLabel: 'Tham gia'
+            },
+            icon: 'pi pi-users',
+            command: () => {
+              this.OpenJoinDialog();
+            }
+        },
+      ];
   }
 
   OpenCreateDialog() {
-    console.log(this.isDialogVisible)
-    this.isDialogVisible = true;
+    if (!this.isJoinDialogVisible) {
+      this.isCreateDialogVisible = true;
+    }
   }
 
-  isDialogVisibleChange(value: boolean) {
-    this.isDialogVisible = value;
+  OpenJoinDialog() {
+    if (!this.isCreateDialogVisible) {
+      this.isJoinDialogVisible = true;
+    }
+  }
+
+  isCreateDialogVisibleChange(value: boolean) {
+    this.isCreateDialogVisible = value;
+  }
+
+  isJoinDialogVisibleChange(value: boolean) {
+    this.isJoinDialogVisible = value;
   }
 }

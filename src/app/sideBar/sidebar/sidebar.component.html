@@ -15,7 +15,23 @@
         <span class="button_text">Dashboard</span>
     </ng-template>
 </div>
-<div class="menu_card" [routerLink]="['/teams']">
+<div class="menu_card" [routerLink]="['/app/chat']">
+    <div *ngIf="getCurrentUrl() === ''" class="back_ground"></div>
+    <div class="icon_text">
+        <ng-template [ngIf]="getCurrentUrl() === ''" [ngIfElse]="blue4">
+            <i class="pi pi-comment button_icon" style="color: #57AE53;"></i>
+            <br>
+            <span class="button_text" style="color: #57AE53;">Đoạn chat</span>
+        </ng-template>
+        
+        <ng-template #blue4>
+            <i class="pi pi-comment button_icon"></i>
+            <br>
+            <span class="button_text">Doạn chat</span>
+        </ng-template>
+    </div>
+</div>
+<div class="menu_card" [routerLink]="['/app/teams']">
     <div *ngIf="getCurrentUrl() === 'Nhóm'" class="back_ground"></div>
     <div class="icon_text">
         <ng-template [ngIf]="getCurrentUrl() === 'Nhóm'" [ngIfElse]="blue3">
@@ -31,7 +47,7 @@
         </ng-template>
     </div>
 </div>
-<div class="menu_card" [routerLink]="['/user']">
+<div class="menu_card" [routerLink]="['/app/user']">
     <div *ngIf="getCurrentUrl() === 'Người dùng'" class="back_ground"></div>
     <div class="icon_text">
         <ng-template [ngIf]="getCurrentUrl() === 'Người dùng'" [ngIfElse]="blue2">
@@ -47,3 +63,11 @@
         </ng-template>
     </div>
 </div>
+<div class="menu_card" (click)="logout($event)">
+    <div class="icon_text">
+        <i class="pi pi-sign-out button_icon"></i>
+        <br>
+        <span class="button_text">Đăng xuất</span>
+    </div>
+</div>
+<p-confirmDialog></p-confirmDialog>

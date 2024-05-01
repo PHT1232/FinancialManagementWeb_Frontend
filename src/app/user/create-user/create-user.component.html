@@ -1,14 +1,22 @@
 <p-dialog [dismissableMask]="true" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false" (onHide)="onHide(false)">
     <ng-template pTemplate="header">
         <h1>
-            Tạo nhóm
+            Tạo người dùng
         </h1>
     </ng-template>
+    <div class="container">
         <div>
-            <label for="team" style="font-size: 15pt; padding-bottom: 12px;">Tên nhóm</label>
+            <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Tên người dùng</label>
             <br>
             <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
-                <input matInput placeholder="Hãy cho nhóm của bạn cái tên">
+                <input matInput placeholder="Tên người dùng hoặc email" [(ngModel)]="user.userName">
+            </mat-form-field>
+        </div>
+        <div>
+            <label for="description" style="font-size: 12pt; padding-bottom: 15px;">Mật khẩu</label>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
+                <input matInput placeholder="Mật khẩu" [(ngModel)]="user.password" type="password">
             </mat-form-field>
         </div>
         <div>
@@ -23,14 +31,8 @@
                 </ngx-dropzone-preview>
               </ngx-dropzone>
         </div>
-        <div>
-            <label for="description" style="padding-bottom: 15px; margin-top: 10px">Chú thích</label>
-            <br>
-            <mat-form-field class="example-full-width" style="width: 100%;">
-                <textarea matInput placeholder="Cho mọi người biết nhóm này về gì"></textarea>
-            </mat-form-field>
-        </div>
+    </div>
     <ng-template pTemplate="footer">
-        <p-button label="Tạo"></p-button>
+        <p-button label="Tạo" (onClick)="register()"></p-button>
     </ng-template>
 </p-dialog>
