@@ -65,6 +65,7 @@ import { LoadingInterceptor } from 'src/services/LoadingInterceptor';
 import { CreateUserComponent } from './user/create-user/create-user.component';
 import { PersonalComponent } from './personal/personal.component';
 import { JoinTeamsComponent } from './teams/join-teams/join-teams.component';
+import { UploadComponent } from './tests/upload/upload.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -87,6 +88,7 @@ export function tokenGetter() {
     CreateUserComponent,
     PersonalComponent,
     JoinTeamsComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,

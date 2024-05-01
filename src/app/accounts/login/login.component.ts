@@ -17,8 +17,6 @@ export class LoginComponent {
 
   constructor(private activatedRoute: ActivatedRoute, private route: Router, private authenService: AuthenticationService) 
   {
-    let user = localStorage.getItem('user');
-
   }
 
   loginFn() {
