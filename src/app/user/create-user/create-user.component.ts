@@ -28,7 +28,7 @@ export class CreateUserComponent {
     this.visibleChange.emit(value);
   }
 
-  isFromValid() {
+  isFormValid() {
     if (this.user === undefined) {
       return false;
     }

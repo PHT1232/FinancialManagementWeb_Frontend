@@ -66,6 +66,7 @@ import { CreateUserComponent } from './user/create-user/create-user.component';
 import { PersonalComponent } from './personal/personal.component';
 import { JoinTeamsComponent } from './teams/join-teams/join-teams.component';
 import { UploadComponent } from './tests/upload/upload.component';
+import { JwtInterceptor } from 'src/authentication/jwt.interceptor';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -125,7 +126,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost:7279"],
+        allowedDomains: ["localhost:44354"],
         disallowedRoutes: []
       }
     }),
@@ -144,6 +145,11 @@ export function tokenGetter() {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
       multi: true,
     }
   ],

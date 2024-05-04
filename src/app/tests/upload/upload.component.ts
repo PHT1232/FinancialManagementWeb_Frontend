@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from 'src/shared/environment';
 
 @Component({
   selector: 'app-upload',
@@ -34,7 +35,7 @@ export class UploadComponent {
   }
 
   upload() {
-    var URL = "https://localhost:7279/api/upload/UserProfileUpload"
+    var URL = environment.baseUrl + "/upload/UserProfileUpload"
     const formData = new FormData();
     for (var file of this.files) {
       formData.append('file', file);

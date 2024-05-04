@@ -5,8 +5,9 @@ import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { TokenInfo } from "./models/authModel/TokenInfo";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { environment } from "src/shared/environment";
 
-const authenServiceUrl = 'https://localhost:7279/api/authenticate' 
+const authenServiceUrl = environment.baseUrl + '/authenticate' 
 @Injectable({
     providedIn: 'root'
 })
