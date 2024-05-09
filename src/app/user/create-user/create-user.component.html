@@ -6,10 +6,17 @@
     </ng-template>
     <div class="container">
         <div>
+            <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Email</label>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
+                <input matInput placeholder="Email người dùng" [(ngModel)]="user.email">
+            </mat-form-field>
+        </div>
+        <div>
             <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Tên người dùng</label>
             <br>
             <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
-                <input matInput placeholder="Tên người dùng hoặc email" [(ngModel)]="user.userName">
+                <input matInput placeholder="Tên người dùng" [(ngModel)]="user.username">
             </mat-form-field>
         </div>
         <div>
@@ -33,6 +40,7 @@
         </div>
     </div>
     <ng-template pTemplate="footer">
-        <p-button label="Tạo" [disabled]="!isFormValid()" (onClick)="register()"></p-button>
+        <p-button *ngIf="this.files.length === 0" label="Tạo" [disabled]="!isFormValid()" (onClick)="register()"></p-button>
+        <p-button *ngIf="this.files.length !== 0" label="Tạo" [disabled]="!isFormValid()" (onClick)="registerWithFile()"></p-button>
     </ng-template>
 </p-dialog>

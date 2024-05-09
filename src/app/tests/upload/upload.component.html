@@ -1,8 +1,16 @@
-<ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png" [multiple]="false">
+<!-- <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png" [multiple]="false">
     <ngx-dropzone-label>Ảnh nhóm</ngx-dropzone-label>
     <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
         <ngx-dropzone-label>
         <img [src]="imageSrc || 'http://placehold.it/180'" width="120" height="120">
+        </ngx-dropzone-label>
+    </ngx-dropzone-preview> -->
+<!-- </ngx-dropzone> -->
+<ngx-dropzone (change)="onSelect($event)" [multiple]="false">
+    <ngx-dropzone-label>Ảnh nhóm</ngx-dropzone-label>
+    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>
+            {{ f.name }} ({{ f.type }})
         </ngx-dropzone-label>
     </ngx-dropzone-preview>
 </ngx-dropzone>

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, map } from "rxjs";
 import { ApplicationUser } from "./models/authModel/ApplicationUser";
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TokenInfo } from "./models/authModel/TokenInfo";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from "src/shared/environment";
@@ -45,18 +45,29 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         let loginUser = new ApplicationUser();
-        loginUser.userName = username;
+        loginUser.username = username;
         loginUser.password = password;
         let loginUrl = authenServiceUrl + '/login';
+
         return this.http.post<TokenInfo>(loginUrl, loginUser);
     }
 
-    register(userName: string, password: string) {
+    register(email: string, userName: string, password: string) {
         let registerUser = new ApplicationUser();
-        registerUser.userName = userName;
+        registerUser.email = email;
+        registerUser.username = userName;
         registerUser.password = password;
         let registerUrl = authenServiceUrl + '/register';
-        return this.http.post(registerUrl, registerUser);
+
+        let options: any = {
+            observe: "response",
+            responseType: "text",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                Accept: "text/plain",
+            }),
+        }
+        return this.http.post(registerUrl, registerUser, options);
     }
 
     logout() {

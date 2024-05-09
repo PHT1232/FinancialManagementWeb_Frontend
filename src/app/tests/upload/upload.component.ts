@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { UserProfileModel } from 'src/services/models/uploadModel/UserProfileModel';
 import { environment } from 'src/shared/environment';
 
 @Component({
@@ -11,6 +12,7 @@ export class UploadComponent {
   files: File[] = [];
   filePath = ""
   imageSrc!: string | ArrayBuffer | null;
+  user!: UserProfileModel;
 
   constructor(private http: HttpClient) {}
 
@@ -39,7 +41,7 @@ export class UploadComponent {
     const formData = new FormData();
     for (var file of this.files) {
       formData.append('file', file);
-      URL += "?Username=lold"
+      URL += "?id=phat";
     }
     this.http.post(URL, formData).subscribe((res) => {
         
