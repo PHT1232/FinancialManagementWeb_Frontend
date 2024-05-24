@@ -10,6 +10,7 @@ import { LoginComponent } from './accounts/login/login.component';
 import { DashbroadComponent } from './dashbroad/dashbroad.component';
 import { RoleComponent } from './tests/role/role.component';
 import { PersonalComponent } from './personal/personal.component';
+import { UploadComponent } from './tests/upload/upload.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: 'teams', component: TeamsComponent, data: { permission: 'User' }, canActivate: [AuthGuard] },
       { path: 'user', component: UserComponent, data: { permission: 'Admin' }, canActivate: [AuthGuard] },
       { path: 'test', component: TestComponent },
-      { path: 'role', component: RoleComponent, data: { permission: 'Admin' }, canActivate: [AuthGuard] }
+      { path: 'role', component: RoleComponent, data: { permission: 'Admin' }, canActivate: [AuthGuard] },
+      { path: 'testupload', component: UploadComponent, data: { permission: 'User'}, canActivate: [AuthGuard] }
     ]
   },
   

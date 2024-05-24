@@ -6,10 +6,17 @@
     </ng-template>
     <div class="container">
         <div>
+            <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Email</label>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
+                <input matInput placeholder="Email người dùng" [(ngModel)]="user.email">
+            </mat-form-field>
+        </div>
+        <div>
             <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Tên người dùng</label>
             <br>
             <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
-                <input matInput placeholder="Tên người dùng hoặc email" [(ngModel)]="user.userName">
+                <input matInput placeholder="Tên người dùng" [(ngModel)]="user.username">
             </mat-form-field>
         </div>
         <div>
@@ -23,16 +30,17 @@
             <label for="profile" style="font-size: 12pt; padding-bottom: 10px;">Ảnh đại diện</label>
             <br>
             <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png" [multiple]="false">
-                <ngx-dropzone-label>Ảnh nhóm</ngx-dropzone-label>
+                <ngx-dropzone-label>Ảnh</ngx-dropzone-label>
                 <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                  <ngx-dropzone-label>
+                    <ngx-dropzone-label>
                     <img [src]="imageSrc || 'http://placehold.it/180'" width="120" height="120">
-                  </ngx-dropzone-label>
+                    </ngx-dropzone-label>
                 </ngx-dropzone-preview>
-              </ngx-dropzone>
+            </ngx-dropzone>
         </div>
     </div>
     <ng-template pTemplate="footer">
-        <p-button label="Tạo" (onClick)="register()"></p-button>
+        <p-button *ngIf="this.files.length === 0" label="Tạo" [disabled]="!isFormValid()" (onClick)="register()"></p-button>
+        <p-button *ngIf="this.files.length !== 0" label="Tạo" [disabled]="!isFormValid()" (onClick)="registerWithFile()"></p-button>
     </ng-template>
 </p-dialog>
