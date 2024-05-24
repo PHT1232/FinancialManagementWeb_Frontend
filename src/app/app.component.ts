@@ -36,6 +36,9 @@ export class AppComponent {
     } else if (currentUrl === '/app/teams') {
       this.currentRoute = "Nhóm";
       return "Nhóm";
+    } else if (currentUrl === '/app/chats') {
+      this.currentRoute = "Đoạn chat";
+      return "Đoạn chat";
     } else {
       this.currentRoute = "Home";
       return "Home";

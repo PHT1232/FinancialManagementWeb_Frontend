@@ -1,7 +1,7 @@
 <div class="row" style="height: 94%;">
-    <div class="leftpanel col-4">
+    <div class="leftpanel col-2">
         <div class="row">
-            <div class="col-10" style="padding-right: 0px;">
+            <div class="col" style="padding-right: 0px;">
                 <div class="header_icon">
                     <span style="bottom: 1px;">Đoạn chat</span>
                 </div>
@@ -10,7 +10,7 @@
                 <p-speedDial [model]="tooltipItems" className="speeddial-left" direction="down" [buttonStyle]="{'bottom': '11px'}"></p-speedDial>
             </div> -->
             <hr style="margin: 0px; background-color: black;">
-            <div>
+            <div class="search_bar">
                 <ng-template [ngIf]="loading" [ngIfElse]="notLoading">
                     <span class="p-input-icon-right">
                         <i class="pi pi-spin pi-spinner"></i>
@@ -19,15 +19,15 @@
                 </ng-template>
                 
                 <ng-template #notLoading>
-                    <span class="p-input-icon-left">
+                    <span class="p-input-icon-left" style="width: 90%;">
                         <i class="pi pi-search"></i>
-                        <input type="text" pInputText [(ngModel)]="value" />
+                        <input type="text" pInputText [(ngModel)]="value" style="width: 100%;" />
                     </span>
                 </ng-template>
             </div>
         </div>
         <div class="teamrow row">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                 <div class="letterblock">N</div>
                 <!-- <img src="" alt=""> -->
             </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="rightpanel col-8">
+    <div class="rightpanel col-10">
         <app-chat></app-chat>
     </div>
 </div>
