@@ -5,6 +5,7 @@ import { AppComponent } from 'src/app/app.component';
 import { AuthenticationService } from 'src/services/AuthenticationService';
 import { ApplicationUser } from 'src/services/models/authModel/ApplicationUser';
 import { UploadService } from 'src/services/UploadService';
+import { UserService } from 'src/services/UserService';
 import { environment } from 'src/shared/environment';
 
 @Component({
@@ -24,7 +25,11 @@ export class CreateUserComponent {
 
   checked = true;
 
-  constructor(private authenService: AuthenticationService, private appMain: AppComponent, private http: HttpClient, private uploadService: UploadService) {
+  constructor(private authenService: AuthenticationService
+    , private appMain: AppComponent
+    , private http: HttpClient
+    , private uploadService: UploadService
+    , private userService: UserService) {
 
   }
 
@@ -55,7 +60,7 @@ export class CreateUserComponent {
   register() {
     let reader = new FileReader();
 
-    this.authenService.register(this.user.email, this.user.username, this.user.password).subscribe({
+    this.userService.register(this.user.email, this.user.username, this.user.password).subscribe({
       next: () => {
         this.appMain.showMessage('success', 'Tạo người dùng thành công');
         this.visible = false;
@@ -68,7 +73,7 @@ export class CreateUserComponent {
   }
 
   registerWithFile() {
-    this.authenService.register(this.user.email, this.user.username, this.user.password).subscribe({
+    this.userService.register(this.user.email, this.user.username, this.user.password).subscribe({
       next: () => {
         debugger;
         this.appMain.showMessage('success', 'Tạo người dùng thành công');

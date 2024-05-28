@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AppComponent } from '../app.component';
+import { UserService } from 'src/services/UserService';
 
 @Component({
   selector: 'app-user',
@@ -8,14 +9,16 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-  products!: any[];
+  datas!: any[];
   items!: MenuItem[];
 
-  selectedProducts!: any;
+  selectedData!: any;
 
   isDialogVisible = false;
 
-  constructor(private appMain: AppComponent) {
+  constructor(private appMain: AppComponent
+    , private userService: UserService
+  ) {
     this.items = [
       {
           label: 'Update',
@@ -39,6 +42,15 @@ export class UserComponent {
         }
       }
     ];
+    this.displayUser();
+  }
+
+  displayUser() {
+    this.userService.getUserDisplay().subscribe({
+      next: (users) => {
+        this.datas = users;
+      }
+    });
   }
 
   showAnimationTest() {

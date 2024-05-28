@@ -33,8 +33,13 @@ export class AuthenticationService {
             if (role === undefined) {
                 return false;
             }
-
-            let roleMatchPermission = role.find(element => element === permission);
+            let roleMatchPermission = undefined;
+            
+            if (role instanceof Array) {
+                roleMatchPermission = role.find(element => element === permission);
+            } else if (role === permission) {
+                roleMatchPermission = role;
+            }
             
             if (roleMatchPermission !== undefined) {
                 return true;
@@ -50,24 +55,6 @@ export class AuthenticationService {
         let loginUrl = authenServiceUrl + '/login';
 
         return this.http.post<TokenInfo>(loginUrl, loginUser);
-    }
-
-    register(email: string, userName: string, password: string) {
-        let registerUser = new ApplicationUser();
-        registerUser.email = email;
-        registerUser.username = userName;
-        registerUser.password = password;
-        let registerUrl = authenServiceUrl + '/register';
-
-        let options: any = {
-            observe: "response",
-            responseType: "text",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json-patch+json",
-                Accept: "text/plain",
-            }),
-        }
-        return this.http.post(registerUrl, registerUser, options);
     }
 
     logout() {

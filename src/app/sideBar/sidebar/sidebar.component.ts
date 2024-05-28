@@ -35,6 +35,10 @@ export class SidebarComponent extends AppComponent implements OnInit {
       },
       reject: () => {
       }
-  });
+    });
+  }
+
+  isItemVisible(permission: string) {
+      return this.authenService.isGranted(permission);
   }
 }
