@@ -41,6 +41,7 @@ import { PasswordModule } from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TagModule } from 'primeng/tag';
 
 //Ngx
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -136,7 +137,8 @@ export function tokenGetter() {
     ToastModule,
     LoadingIndicatorComponent,
     ConfirmDialogModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    TagModule
   ],
   providers: [
     DialogService,

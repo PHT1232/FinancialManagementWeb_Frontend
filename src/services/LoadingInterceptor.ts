@@ -13,7 +13,7 @@ export class LoadingInterceptor implements HttpInterceptor {
         if (req.context.get(SkipLoading)) {
             return next.handle(req);
         }
-
+        
         this.loadingService.loadingOn();
         
         return next.handle(req).pipe(

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Observable, Subject } from 'rxjs';
+import { UserDisplay } from 'src/services/models/Users/UserDisplay';
+import { UserService } from 'src/services/UserService';
 
 @Component({
   selector: 'app-personal',
@@ -8,8 +11,12 @@ import { MenuItem } from 'primeng/api';
 })
 export class PersonalComponent implements OnInit {
   tooltipItems!: MenuItem[];
-  value = "";
   loading = false;
+  users: UserDisplay[] = [];
+
+  value: string = '';
+
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.tooltipItems = [
@@ -30,5 +37,21 @@ export class PersonalComponent implements OnInit {
           }
       },
     ];
+
+  }
+
+  async change(event: Event) {
+    this.loading = true;
+    if (this.value !== '') {
+      this.userService.searchUsers(this.value).subscribe({
+        next: (data) => {
+          console.log(data);
+        }
+      })   
+    }
+  }
 }
+
+function delay(ms: number) {
+  return new Promise( resolve => setTimeout(resolve, ms) );
 }

@@ -43,3 +43,10 @@
     margin-top: 10px;
     margin-bottom: 15px;
 }
+
+.avatar {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 50%;
+    margin-right: 10px;
+}
