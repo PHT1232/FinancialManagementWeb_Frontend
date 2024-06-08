@@ -12,77 +12,40 @@
             </div> -->
             <hr style="margin: 0px; background-color: black;">
             <div class="search_bar">
-                <ng-template [ngIf]="loading" [ngIfElse]="notLoading">
+                <!-- <ng-template [ngIf]="loading" [ngIfElse]="notLoading">
                     <span class="p-input-icon-right" style="width: 90%;">
                         <i class="pi pi-spin pi-spinner"></i>
                         <input [disabled]="true" type="text" pInputText [(ngModel)]="value" style="width: 100%;"/>
                     </span>
-                </ng-template>
+                </ng-template> -->
                 
-                <ng-template #notLoading>
+                <!-- <ng-template #notLoading> -->
                     <span class="p-input-icon-left" style="width: 90%;">
-                        <i class="pi pi-search"></i>
-                        <input type="text" pInputText [(ngModel)]="value" style="width: 100%;" (input)="change($event)"/>
+                        <ng-template [ngIf]="loading" [ngIfElse]="notLoading">
+                            <i class="pi pi-spin pi-spinner"></i>
+                        </ng-template>
+                        <ng-template #notLoading>
+                            <i class="pi pi-search"></i>
+                        </ng-template>
+                        <input #searchInput type="text" [disabled]="loading" pInputText [(ngModel)]="value" style="width: 100%;" (input)="change($event)"/>
                     </span>
-                </ng-template>
+                <!-- </ng-template> -->
             </div>
         </div>
-        <div class="teamrow row" *ngFor="let user of users">
-            <div class="col-sm-4">
-                <!-- <div class="letterblock">
-                </div> -->
-                <img [src]="'https://localhost:7279/api/file/GetUserProfile?user=' + user.userId + '&fileName=' + user.userProfile" class="avatar" />
-                <!-- <img src="" alt=""> -->
-            </div>
-            <div class="col-sm-8" style="margin-top: 20px;">
-                <span style="margin-top: 15px;">Người dùng 1</span>
-            </div>
-        </div>
-    </div>
-    <div class="rightpanel col-10">
-        <app-chat></app-chat>
-    </div>
-
-<div class="row" style="height: 94%;">
-    <div class="leftpanel col-2">
-        <div class="row">
-            <div class="col" style="padding-right: 0px;">
-                <div class="header_icon">
-                    <span style="bottom: 1px;">Đoạn chat</span>
+        <div *ngFor="let user of users">
+            <div class="teamrow row" (click)="clickUser(user.userId)">
+                <div class="col-sm-4">
+                    <!-- <div class="letterblock">
+                    </div> -->
+                    <img [src]="'https://localhost:7279/api/file/GetUserProfile?user=' + user.userId + '&fileName=' + user.userProfile" class="avatar" />
+                    <!-- <img src="" alt=""> -->
+                </div>
+                <div class="col-sm-8" style="margin-top: 20px;">
+                    <span style="margin-top: 15px;">{{ user.userName }}</span>
                 </div>
             </div>
-            <!-- <div class="headerspeed col-2">
-                <p-speedDial [model]="tooltipItems" className="speeddial-left" direction="down" [buttonStyle]="{'bottom': '11px'}"></p-speedDial>
-            </div> -->
-            <hr style="margin: 0px; background-color: black;">
-            <div class="search_bar">
-                <ng-template [ngIf]="loading" [ngIfElse]="notLoading">
-                    <span class="p-input-icon-right">
-                        <i class="pi pi-spin pi-spinner"></i>
-                        <input [disabled]="true" type="text" pInputText [(ngModel)]="value" />
-                    </span>
-                </ng-template>
-                
-                <ng-template #notLoading>
-                    <span class="p-input-icon-left" style="width: 90%;">
-                        <i class="pi pi-search"></i>
-                        <input type="text" pInputText [(ngModel)]="value" style="width: 100%;" />
-                    </span>
-                </ng-template>
-            </div>
-        </div>
-        <div class="teamrow row">
-            <div class="col-sm-4">
-                <div class="letterblock">N</div>
-                <!-- <img src="" alt=""> -->
-            </div>
-            <div class="col-sm-8" style="margin-top: 20px;">
-                <span style="margin-top: 15px;">Người dùng 1</span>
-            </div>
         </div>
     </div>
     <div class="rightpanel col-10">
-        <app-chat></app-chat>
+        <app-chat [inputFromParent]="userSeleted"></app-chat>
     </div>
-
-</div>

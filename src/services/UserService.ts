@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpContext, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ApplicationUser } from "./models/authModel/ApplicationUser";
 import { environment } from "src/shared/environment";
 import { UserDisplay } from "./models/Users/UserDisplay";
+import { SkipLoading } from "./LoadingInterceptor";
 
 const userServiceUrl = environment.baseUrl + '/user'
 @Injectable({
@@ -39,6 +40,8 @@ export class UserService {
 
     searchUsers(searchValues: string) {
         let localUrl = userServiceUrl + "/SearchUsers?searchValues=" + searchValues;
-        return this.http.get<UserDisplay[]>(localUrl);
+        return this.http.get<UserDisplay[]>(localUrl, {
+            context: new HttpContext().set(SkipLoading, true),
+        });
     }
 }

@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, map } from "rxjs";
 import { ApplicationUser } from "./models/authModel/ApplicationUser";
 import { Router } from "@angular/router";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpContext, HttpHeaders } from "@angular/common/http";
 import { TokenInfo } from "./models/authModel/TokenInfo";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from "src/shared/environment";
+import { SkipLoading } from "./LoadingInterceptor";
 
 const authenServiceUrl = environment.baseUrl + '/authenticate' 
 @Injectable({
@@ -54,7 +55,9 @@ export class AuthenticationService {
         loginUser.password = password;
         let loginUrl = authenServiceUrl + '/login';
 
-        return this.http.post<TokenInfo>(loginUrl, loginUser);
+        return this.http.post<TokenInfo>(loginUrl, loginUser, {
+            context: new HttpContext().set(SkipLoading, true),
+        });
     }
 
     logout() {
