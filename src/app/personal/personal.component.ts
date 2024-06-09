@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Observable, Subject } from 'rxjs';
 import { UserDisplay } from 'src/services/models/Users/UserDisplay';
-import { UserService } from 'src/services/UserService';
+import { UserChatService } from 'src/services/UserChatService';
 
 @Component({
   selector: 'app-personal',
@@ -20,7 +20,7 @@ export class PersonalComponent implements OnInit {
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
-  constructor(private userService: UserService) {}
+  constructor(private userChatService: UserChatService) {}
 
   ngOnInit(): void {
     this.tooltipItems = [
@@ -47,7 +47,7 @@ export class PersonalComponent implements OnInit {
   async change(event: Event) {
     if (this.value !== '') {
       this.loading = true;
-      this.userService.searchUsers(this.value).subscribe({
+      this.userChatService.searchUsers(this.value).subscribe({
         next: (data) => {
           console.log(data);
           this.users = data;          

@@ -37,11 +37,4 @@ export class UserService {
         let localUrl = userServiceUrl + '/GetUsersForDisplay';
         return this.http.get<UserDisplay[]>(localUrl);
     }
-
-    searchUsers(searchValues: string) {
-        let localUrl = userServiceUrl + "/SearchUsers?searchValues=" + searchValues;
-        return this.http.get<UserDisplay[]>(localUrl, {
-            context: new HttpContext().set(SkipLoading, true),
-        });
-    }
 }
