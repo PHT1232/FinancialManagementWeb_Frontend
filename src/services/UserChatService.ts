@@ -4,7 +4,7 @@ import { environment } from "src/shared/environment";
 import { UserDisplay } from "./models/Users/UserDisplay";
 import { SkipLoading } from "./LoadingInterceptor";
 
-const userChatServiceUrl = environment.baseUrl + '/user'
+const userChatServiceUrl = environment.baseUrl + '/user/chat'
 @Injectable({
     providedIn: 'root',
 })
