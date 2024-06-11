@@ -13,10 +13,17 @@
             </mat-form-field>
         </div>
         <div>
+            <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Username</label>
+            <br>
+            <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
+                <input matInput placeholder="Username" [(ngModel)]="user.username">
+            </mat-form-field>
+        </div>
+        <div>
             <label for="team" style="font-size: 12pt; padding-bottom: 15px;">Tên người dùng</label>
             <br>
             <mat-form-field class="example-full-width" style="width: 100%; font-size: 12pt">
-                <input matInput placeholder="Tên người dùng" [(ngModel)]="user.username">
+                <input matInput placeholder="Tên người dùng" [(ngModel)]="user.userrealname">
             </mat-form-field>
         </div>
         <div>

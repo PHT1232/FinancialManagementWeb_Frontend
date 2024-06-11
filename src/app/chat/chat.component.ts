@@ -6,5 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent {
+  
   @Input() inputFromParent: string = "";
 }
