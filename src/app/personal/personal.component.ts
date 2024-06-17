@@ -60,6 +60,7 @@ export class PersonalComponent implements OnInit {
   }
   
   clickUser(userId: string) {
+    this.userSeleted = userId;
     console.log(userId);
   }
 }

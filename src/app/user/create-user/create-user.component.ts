@@ -61,7 +61,7 @@ export class CreateUserComponent {
   register() {
     let reader = new FileReader();
 
-    this.userService.register(this.user.email, this.user.username, this.user.password).subscribe({
+    this.userService.register(this.user.email, this.user.username, this.user.password, this.user.userRealName).subscribe({
       next: () => {
         this.appMain.showMessage('success', 'Tạo người dùng thành công');
         this.visible = false;
@@ -74,9 +74,8 @@ export class CreateUserComponent {
   }
 
   registerWithFile() {
-    this.userService.register(this.user.email, this.user.username, this.user.password).subscribe({
+    this.userService.register(this.user.email, this.user.username, this.user.password, this.user.userRealName).subscribe({
       next: () => {
-        debugger;
         this.appMain.showMessage('success', 'Tạo người dùng thành công');
         this.uploadService.UserProfileUpload(this.file, this.user.username).subscribe({
           next: () => {

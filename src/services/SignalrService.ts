@@ -13,7 +13,7 @@ export class SignalrService {
 
     public startConnection = () => {
         this.hubConnection = new signalR.HubConnectionBuilder()
-                                .withUrl(environment.baseUrl + 'chat')
+                                .withUrl(environment.baseUrl + '/chat')
                                 .build();
         this.hubConnection
             .start()

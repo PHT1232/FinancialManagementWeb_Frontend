@@ -15,11 +15,12 @@ export class UserService {
     ) {
     }
 
-    register(email: string, userName: string, password: string) {
+    register(email: string, userName: string, password: string, userRealName: string) {
         let registerUser = new ApplicationUser();
         registerUser.email = email;
         registerUser.username = userName;
         registerUser.password = password;
+        registerUser.userRealName = userRealName;
         let registerUrl = userServiceUrl + '/register';
 
         let options: any = {
