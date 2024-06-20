@@ -27,6 +27,7 @@ export class LoginComponent {
       next: (token) => { 
         this.loading = false;
         localStorage.setItem('token', token.token);
+        localStorage.setItem('userId', token.userId);
 
         if (returnUrl === undefined || returnUrl === '' || returnUrl === '/account/login') {
           this.route.navigate(['app/teams']);       

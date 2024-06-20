@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from 'src/services/ChatService';
 import { SignalrService } from 'src/services/SignalrService';
 import { Chat } from 'src/services/models/Chat';
@@ -19,6 +20,7 @@ export class TestComponent implements OnInit {
   ngOnInit(): void {
     this.signalService.startConnection();
     this.signalService.addTransferChatDataListener();
+    this.signalService.addConnectedUserListener();
     // this.startHttpRequest();
   }
 
@@ -28,4 +30,12 @@ export class TestComponent implements OnInit {
   //       console.log(res.chatMessage);
   //     })
   // }
+
+  click() {
+    // let userId = localStorage.getItem('userId');
+    // if (userId !== null) {
+    //   this.signalService.send(userId, 'toi an com')
+    // }
+    this.signalService.getConnectedUser();
+  }
 }

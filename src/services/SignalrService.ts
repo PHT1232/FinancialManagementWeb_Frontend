@@ -22,9 +22,23 @@ export class SignalrService {
     }
 
     public addTransferChatDataListener = () => {
-        this.hubConnection.on('TransferChartData', (data) => {
-            this.data = data;
-            console.log(data);
+        this.hubConnection.on('TransferChartData', (user: string, message: string) => {
+            console.log(user);
+            console.log(message);
         });
+    }
+
+    public addConnectedUserListener = () => {
+        this.hubConnection.on('connected', (users: string[]) => {
+            console.log(users);
+        })
+    }
+
+    public send = (userId: string, chatMessage: string) => {
+        this.hubConnection.send("sendMessage", userId, chatMessage);
+    }
+
+    public getConnectedUser = () => {
+        this.hubConnection.send("getConnectedUser");
     }
 }
