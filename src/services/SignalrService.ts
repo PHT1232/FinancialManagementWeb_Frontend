@@ -12,8 +12,14 @@ export class SignalrService {
     private hubConnection!: signalR.HubConnection;
 
     public startConnection = () => {
+        let token = localStorage.getItem('token');
         this.hubConnection = new signalR.HubConnectionBuilder()
-                                .withUrl(environment.baseUrl + '/chat')
+                                .withUrl(environment.baseUrl + '/chat', { accessTokenFactory: () => {
+                                    if (token === null) {
+                                       return ""
+                                    }
+                                    return token;
+                                }})
                                 .build();
         this.hubConnection
             .start()
