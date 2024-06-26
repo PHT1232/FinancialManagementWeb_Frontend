@@ -50,6 +50,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 //My style component
 import { ModalFooterComponent } from 'src/shared/modal-footer/modal-footer.component';
 
+//Other component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TeamsComponent } from './teams/teams.component';
 import { CreateTeamsComponent } from './teams/create-teams/create-teams.component';
@@ -68,6 +69,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { JoinTeamsComponent } from './teams/join-teams/join-teams.component';
 import { UploadComponent } from './tests/upload/upload.component';
 import { JwtInterceptor } from 'src/authentication/jwt.interceptor';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -138,7 +140,8 @@ export function tokenGetter() {
     LoadingIndicatorComponent,
     ConfirmDialogModule,
     NgxDropzoneModule,
-    TagModule
+    TagModule,
+    PickerModule
   ],
   providers: [
     DialogService,

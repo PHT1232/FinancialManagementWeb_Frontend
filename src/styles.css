@@ -3,6 +3,7 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~@ctrl/ngx-emoji-mart/picker";
 
 html, body { height: 0%; width: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

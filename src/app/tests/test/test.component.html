@@ -1,6 +1,23 @@
 <div class="chat">
 
-    <div class="input">
+    <!-- <div class="input">
         <i class="fas fa-camera"></i><i class="far fa-laugh-beam"></i><input placeholder="Type your message here!" type="text" /><button (click)="click()" class="fas fa-microphone"></button>
-    </div>
+    </div> -->
+    <textarea
+    placeholder="Type a message"
+    type="text"
+    name="textarea"
+    [(ngModel)]="textArea"
+  ></textarea>
+
+
+  <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+  <br />
+  <emoji-mart
+  [style]="{width: '100%'}"
+  class="emoji-mart"
+  *ngIf="isEmojiPickerVisible"
+  (emojiClick)="addEmoji($event)"
+  title="Choose your emoji"
+></emoji-mart>
 </div>

@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Chat } from "./models/Chat";
 import * as signalR from "@microsoft/signalr"
 import { environment } from "src/shared/environment";
 
@@ -7,7 +6,6 @@ import { environment } from "src/shared/environment";
     providedIn: 'root'
 })
 export class SignalrService {
-    public data!: Chat[];
     
     private hubConnection!: signalR.HubConnection;
 
@@ -41,7 +39,7 @@ export class SignalrService {
     }
 
     public send = (userId: string, chatMessage: string) => {
-        this.hubConnection.send("sendMessage", userId, chatMessage);
+        this.hubConnection.send("SendChatMessage", userId, chatMessage);
     }
 
     public getConnectedUser = () => {

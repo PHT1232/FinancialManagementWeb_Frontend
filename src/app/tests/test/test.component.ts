@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatService } from 'src/services/ChatService';
 import { SignalrService } from 'src/services/SignalrService';
-import { Chat } from 'src/services/models/Chat';
 
 @Component({
   selector: 'app-test',
@@ -11,7 +10,8 @@ import { Chat } from 'src/services/models/Chat';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  chats: Chat[] = [];
+
+  textArea: string = '';
 
   constructor(private chatService: ChatService
               , private signalService: SignalrService
@@ -30,7 +30,11 @@ export class TestComponent implements OnInit {
   //       console.log(res.chatMessage);
   //     })
   // }
-
+  isEmojiPickerVisible!: boolean;
+  addEmoji(event: any) {
+    this.textArea = `${event.emoji.id}`;
+    this.isEmojiPickerVisible = false;
+  }
   click() {
     // let userId = localStorage.getItem('userId');
     // if (userId !== null) {
