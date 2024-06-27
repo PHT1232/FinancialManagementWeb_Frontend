@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/shared/environment";
 import { UserDisplay } from "./models/Users/UserDisplay";
 import { SkipLoading } from "./LoadingInterceptor";
+import { ChatMessageModel } from "./models/ChatModels/ChatMessageModel";
 
 const userChatServiceUrl = environment.baseUrl + '/user/chat'
 @Injectable({
@@ -20,5 +21,10 @@ export class UserChatService {
         return this.http.get<UserDisplay[]>(localUrl, {
             context: new HttpContext().set(SkipLoading, true),
         });
+    }
+
+    sendMessages(chatMessage: ChatMessageModel) {
+        let localUrl = userChatServiceUrl + '/SendMessage';
+        return this.http.post(localUrl, chatMessage);
     }
 }

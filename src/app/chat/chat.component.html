@@ -1,4 +1,4 @@
-  <div class="chat">
+  <div class="chat" [style.height.%]="height">
     <div class="contact bar">
       <div class="pic stark" style="display: inline-block;"></div>
       <h2 style="position: relative; bottom: 50px; margin-left:  80px;">Tony stark</h2>
@@ -14,13 +14,13 @@
         Kid, where'd you come from? 
       </div>
       <div class="message parker">
-        Field trip! &#128151;
+        Field trip!
       </div>
       <div class="message parker">
         Uh, what is this guy's problem, Mr. Stark? &#128512;
       </div>
       <div class="message stark">
-        {{inputFromParent}}
+        {{selectedUser}}
       </div>              
       <div class="message stark">
         Uh, he's from space, he came here to steal a necklace from a wizard.
@@ -98,6 +98,13 @@
       </div>
     </div>
     <div class="input">
-        <i class="fas fa-camera"></i><i class="far fa-laugh-beam"></i><input placeholder="Type your message here!" type="text" /><i class="pi pi-send"></i>
+        <i class="fas fa-camera"></i><i (click)="openEmojimart()" class="far fa-laugh-beam"></i><input [(ngModel)]="value" placeholder="Type your message here!" type="text" /><i class="pi pi-send"></i>
     </div>
 </div>
+<emoji-mart
+  [style]="{width: '100%'}"
+  class="emoji-mart"
+  *ngIf="isEmojiPickerVisible"
+  (emojiClick)="addEmoji($event)"
+  title="Choose your emoji"
+></emoji-mart>

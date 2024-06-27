@@ -19,7 +19,7 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     this.signalService.startConnection();
-    this.signalService.addTransferChatDataListener();
+    this.signalService.messageListener();
     this.signalService.addConnectedUserListener();
     // this.startHttpRequest();
   }
