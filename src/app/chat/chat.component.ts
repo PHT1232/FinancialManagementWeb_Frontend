@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Window } from '@popperjs/core';
+import { ChatMessageModel } from 'src/services/models/ChatModels/ChatMessageModel';
 import { SignalrService } from 'src/services/SignalrService';
 import { UserChatService } from 'src/services/UserChatService';
 
@@ -15,6 +16,8 @@ export class ChatComponent {
   height: number = 100;
 
   value: string = "";
+
+  chatMessage: ChatMessageModel = new ChatMessageModel();
 
   isEmojiPickerVisible!: boolean;
 
@@ -35,6 +38,22 @@ export class ChatComponent {
 
   sendMessage() {
     let userId = localStorage.getItem('userId');
+
+    if (userId !== null) {
+      this.chatMessage.chatSessionId = 0;
+      this.chatMessage.sentId = userId;
+      this.chatMessage.receivedId = this.selectedUser;
+      this.chatMessage.message = this.value;
+    }
+
+    this.userChatService.sendMessages(this.chatMessage).subscribe({
+      next: () => {
+        console.log("lol")
+      },
+      error: (errorRes) => {        
+        console.log("lal")
+      }
+    });
   }
 
   openEmojimart() {

@@ -98,7 +98,7 @@
       </div>
     </div>
     <div class="input">
-        <i class="fas fa-camera"></i><i (click)="openEmojimart()" class="far fa-laugh-beam"></i><input [(ngModel)]="value" placeholder="Type your message here!" type="text" /><i class="pi pi-send"></i>
+        <i class="fas fa-camera"></i><i (click)="openEmojimart()" class="far fa-laugh-beam"></i><input [(ngModel)]="value" placeholder="Type your message here!" type="text" /><i (click)="sendMessage()" class="pi pi-send"></i>
     </div>
 </div>
 <emoji-mart
